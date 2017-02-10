@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youwin.yws.persistence.crm.CrmOrderStudentRefundMapper" >
+  <resultMap id="BaseResultMap" type="com.youwin.yws.models.crm.CrmOrderStudentRefund" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="organization_id" property="organizationId" jdbcType="BIGINT" />
+    <result column="leads_student_id" property="leadsStudentId" jdbcType="BIGINT" />
+    <result column="origin_order_no" property="originOrderNo" jdbcType="VARCHAR" />
+    <result column="refund_no" property="refundNo" jdbcType="VARCHAR" />
+    <result column="refund_type" property="refundType" jdbcType="INTEGER" />
+    <result column="refund_date" property="refundDate" jdbcType="TIMESTAMP" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="BIGINT" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="BIGINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+    <result column="ext" property="ext" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, organization_id, leads_student_id, origin_order_no, refund_no, refund_type, refund_date, 
+    created_at, created_by, updated_at, updated_by, is_deleted, ext
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.youwin.yws.models.crm.CrmOrderStudentRefundExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from crm_order_student_refund
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_order_student_refund
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from crm_order_student_refund
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.youwin.yws.models.crm.CrmOrderStudentRefundExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from crm_order_student_refund
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.youwin.yws.models.crm.CrmOrderStudentRefund" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into crm_order_student_refund (organization_id, leads_student_id, origin_order_no, 
+      refund_no, refund_type, refund_date, 
+      created_at, created_by, updated_at, 
+      updated_by, is_deleted, ext
+      )
+    values (#{organizationId,jdbcType=BIGINT}, #{leadsStudentId,jdbcType=BIGINT}, #{originOrderNo,jdbcType=VARCHAR}, 
+      #{refundNo,jdbcType=VARCHAR}, #{refundType,jdbcType=INTEGER}, #{refundDate,jdbcType=TIMESTAMP}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=BIGINT}, #{updatedAt,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=BIGINT}, #{isDeleted,jdbcType=BIT}, #{ext,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.youwin.yws.models.crm.CrmOrderStudentRefund" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into crm_order_student_refund
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="leadsStudentId != null" >
+        leads_student_id,
+      </if>
+      <if test="originOrderNo != null" >
+        origin_order_no,
+      </if>
+      <if test="refundNo != null" >
+        refund_no,
+      </if>
+      <if test="refundType != null" >
+        refund_type,
+      </if>
+      <if test="refundDate != null" >
+        refund_date,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="ext != null" >
+        ext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="leadsStudentId != null" >
+        #{leadsStudentId,jdbcType=BIGINT},
+      </if>
+      <if test="originOrderNo != null" >
+        #{originOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundNo != null" >
+        #{refundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundType != null" >
+        #{refundType,jdbcType=INTEGER},
+      </if>
+      <if test="refundDate != null" >
+        #{refundDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="ext != null" >
+        #{ext,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.youwin.yws.models.crm.CrmOrderStudentRefundExample" resultType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select count(*) from crm_order_student_refund
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_order_student_refund
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.organizationId != null" >
+        organization_id = #{record.organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="record.leadsStudentId != null" >
+        leads_student_id = #{record.leadsStudentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.originOrderNo != null" >
+        origin_order_no = #{record.originOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundNo != null" >
+        refund_no = #{record.refundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.refundType != null" >
+        refund_type = #{record.refundType,jdbcType=INTEGER},
+      </if>
+      <if test="record.refundDate != null" >
+        refund_date = #{record.refundDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdAt != null" >
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdBy != null" >
+        created_by = #{record.createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.updatedAt != null" >
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null" >
+        updated_by = #{record.updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=BIT},
+      </if>
+      <if test="record.ext != null" >
+        ext = #{record.ext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_order_student_refund
+    set id = #{record.id,jdbcType=BIGINT},
+      organization_id = #{record.organizationId,jdbcType=BIGINT},
+      leads_student_id = #{record.leadsStudentId,jdbcType=BIGINT},
+      origin_order_no = #{record.originOrderNo,jdbcType=VARCHAR},
+      refund_no = #{record.refundNo,jdbcType=VARCHAR},
+      refund_type = #{record.refundType,jdbcType=INTEGER},
+      refund_date = #{record.refundDate,jdbcType=TIMESTAMP},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      created_by = #{record.createdBy,jdbcType=BIGINT},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      updated_by = #{record.updatedBy,jdbcType=BIGINT},
+      is_deleted = #{record.isDeleted,jdbcType=BIT},
+      ext = #{record.ext,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youwin.yws.models.crm.CrmOrderStudentRefund" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_order_student_refund
+    <set >
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="leadsStudentId != null" >
+        leads_student_id = #{leadsStudentId,jdbcType=BIGINT},
+      </if>
+      <if test="originOrderNo != null" >
+        origin_order_no = #{originOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundNo != null" >
+        refund_no = #{refundNo,jdbcType=VARCHAR},
+      </if>
+      <if test="refundType != null" >
+        refund_type = #{refundType,jdbcType=INTEGER},
+      </if>
+      <if test="refundDate != null" >
+        refund_date = #{refundDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="ext != null" >
+        ext = #{ext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youwin.yws.models.crm.CrmOrderStudentRefund" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_order_student_refund
+    set organization_id = #{organizationId,jdbcType=BIGINT},
+      leads_student_id = #{leadsStudentId,jdbcType=BIGINT},
+      origin_order_no = #{originOrderNo,jdbcType=VARCHAR},
+      refund_no = #{refundNo,jdbcType=VARCHAR},
+      refund_type = #{refundType,jdbcType=INTEGER},
+      refund_date = #{refundDate,jdbcType=TIMESTAMP},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=BIGINT},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=BIGINT},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      ext = #{ext,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <cache >
+    <!--
+      WARNING - @mbggenerated
+    -->
+  </cache>
+</mapper>

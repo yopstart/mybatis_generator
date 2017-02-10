@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="com/youwin/yws/generator/generatorConfig.properties" />
+
+
+    <classPathEntry	location="${classPath}"/>
+    <context id="DB2Tables"	targetRuntime="MyBatis3">
+
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+        <plugin type="org.mybatis.generator.plugins.CachePlugin"></plugin>
+
+
+        
+        <commentGenerator type="com.youwin.yws.util.MyCommentGenerator">
+            <property name="suppressDate" value="true"/>
+            <!-- 是否不要所有的注解  原来是false -->
+            <property name="suppressAllComments" value="false"/>
+        </commentGenerator>
+        <jdbcConnection driverClass="${driverClass}"
+                        connectionURL="${connectionURL}" userId="${userId}" password="${password}">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="${modelPackage}" targetProject="${targetProject}">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="${sqlMapperPackage}" targetProject="${targetProject}">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${daoMapperPackage}" targetProject="${targetProject}">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+		
+		<!-- 单个表生成 -->
+        <table tableName="help_content"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="mysql" identity="true" />
+        </table>
+        
+        <!-- 全部表生成 -->
+        <!-- <table tableName="%"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+            <generatedKey column="id" sqlStatement="mysql" identity="true" />
+        </table> -->
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,1123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youwin.yws.persistence.crm.EmployeesMapper" >
+  <resultMap id="BaseResultMap" type="com.youwin.yws.models.crm.Employees" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="department_id" property="departmentId" jdbcType="BIGINT" />
+    <result column="position_id" property="positionId" jdbcType="BIGINT" />
+    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="BIGINT" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="ethnic" property="ethnic" jdbcType="VARCHAR" />
+    <result column="marital_status" property="maritalStatus" jdbcType="INTEGER" />
+    <result column="birth_date" property="birthDate" jdbcType="TIMESTAMP" />
+    <result column="highest_education_institute" property="highestEducationInstitute" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="graduation_date" property="graduationDate" jdbcType="TIMESTAMP" />
+    <result column="education_degree" property="educationDegree" jdbcType="INTEGER" />
+    <result column="education_degree_type" property="educationDegreeType" jdbcType="INTEGER" />
+    <result column="registered_residence" property="registeredResidence" jdbcType="VARCHAR" />
+    <result column="registered_residence_type" property="registeredResidenceType" jdbcType="INTEGER" />
+    <result column="emergency_contact_name" property="emergencyContactName" jdbcType="VARCHAR" />
+    <result column="emergency_contact_relationship" property="emergencyContactRelationship" jdbcType="INTEGER" />
+    <result column="emergency_contact_number" property="emergencyContactNumber" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="employment_status" property="employmentStatus" jdbcType="INTEGER" />
+    <result column="employment_type" property="employmentType" jdbcType="INTEGER" />
+    <result column="hiring_date" property="hiringDate" jdbcType="TIMESTAMP" />
+    <result column="trial_end_date" property="trialEndDate" jdbcType="TIMESTAMP" />
+    <result column="employment_level" property="employmentLevel" jdbcType="INTEGER" />
+    <result column="supervisor" property="supervisor" jdbcType="BIGINT" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="star_level" property="starLevel" jdbcType="VARCHAR" />
+    <result column="working_years" property="workingYears" jdbcType="INTEGER" />
+    <result column="latest_working_experience" property="latestWorkingExperience" jdbcType="VARCHAR" />
+    <result column="latest_company_position" property="latestCompanyPosition" jdbcType="VARCHAR" />
+    <result column="latest_education_start_date" property="latestEducationStartDate" jdbcType="DATE" />
+    <result column="latest_education_end_date" property="latestEducationEndDate" jdbcType="DATE" />
+    <result column="recruitment_sources" property="recruitmentSources" jdbcType="VARCHAR" />
+    <result column="reference_name" property="referenceName" jdbcType="VARCHAR" />
+    <result column="payment_start_date" property="paymentStartDate" jdbcType="TIMESTAMP" />
+    <result column="contract_start_date" property="contractStartDate" jdbcType="TIMESTAMP" />
+    <result column="contract_end_date" property="contractEndDate" jdbcType="TIMESTAMP" />
+    <result column="contract_type" property="contractType" jdbcType="INTEGER" />
+    <result column="employer" property="employer" jdbcType="VARCHAR" />
+    <result column="trial_salary" property="trialSalary" jdbcType="DOUBLE" />
+    <result column="salary" property="salary" jdbcType="DOUBLE" />
+    <result column="performance_base" property="performanceBase" jdbcType="DOUBLE" />
+    <result column="royalty" property="royalty" jdbcType="DOUBLE" />
+    <result column="social_security_status" property="socialSecurityStatus" jdbcType="INTEGER" />
+    <result column="social_security_base" property="socialSecurityBase" jdbcType="DOUBLE" />
+    <result column="social_security_self_amount" property="socialSecuritySelfAmount" jdbcType="DOUBLE" />
+    <result column="social_security_employer_amount" property="socialSecurityEmployerAmount" jdbcType="DOUBLE" />
+    <result column="social_security_address" property="socialSecurityAddress" jdbcType="VARCHAR" />
+    <result column="housing_fund_status" property="housingFundStatus" jdbcType="INTEGER" />
+    <result column="housing_fund_base" property="housingFundBase" jdbcType="DOUBLE" />
+    <result column="housing_fund_self_amount" property="housingFundSelfAmount" jdbcType="DOUBLE" />
+    <result column="housing_fund_employer_amount" property="housingFundEmployerAmount" jdbcType="DOUBLE" />
+    <result column="housing_fund_address" property="housingFundAddress" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="BIGINT" />
+    <result column="updated_by" property="updatedBy" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, user_id, department_id, position_id, id_number, age, mobile, ethnic, marital_status, 
+    birth_date, highest_education_institute, major, graduation_date, education_degree, 
+    education_degree_type, registered_residence, registered_residence_type, emergency_contact_name, 
+    emergency_contact_relationship, emergency_contact_number, address, employment_status, 
+    employment_type, hiring_date, trial_end_date, employment_level, supervisor, subject, 
+    star_level, working_years, latest_working_experience, latest_company_position, latest_education_start_date, 
+    latest_education_end_date, recruitment_sources, reference_name, payment_start_date, 
+    contract_start_date, contract_end_date, contract_type, employer, trial_salary, salary, 
+    performance_base, royalty, social_security_status, social_security_base, social_security_self_amount, 
+    social_security_employer_amount, social_security_address, housing_fund_status, housing_fund_base, 
+    housing_fund_self_amount, housing_fund_employer_amount, housing_fund_address, created_at, 
+    updated_at, created_by, updated_by
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.youwin.yws.models.crm.EmployeesExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from employees
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from employees
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from employees
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.youwin.yws.models.crm.EmployeesExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from employees
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.youwin.yws.models.crm.Employees" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into employees (user_id, department_id, position_id, 
+      id_number, age, mobile, 
+      ethnic, marital_status, birth_date, 
+      highest_education_institute, major, graduation_date, 
+      education_degree, education_degree_type, registered_residence, 
+      registered_residence_type, emergency_contact_name, 
+      emergency_contact_relationship, emergency_contact_number, 
+      address, employment_status, employment_type, 
+      hiring_date, trial_end_date, employment_level, 
+      supervisor, subject, star_level, 
+      working_years, latest_working_experience, 
+      latest_company_position, latest_education_start_date, 
+      latest_education_end_date, recruitment_sources, 
+      reference_name, payment_start_date, contract_start_date, 
+      contract_end_date, contract_type, employer, 
+      trial_salary, salary, performance_base, 
+      royalty, social_security_status, social_security_base, 
+      social_security_self_amount, social_security_employer_amount, 
+      social_security_address, housing_fund_status, 
+      housing_fund_base, housing_fund_self_amount, housing_fund_employer_amount, 
+      housing_fund_address, created_at, updated_at, 
+      created_by, updated_by)
+    values (#{userId,jdbcType=BIGINT}, #{departmentId,jdbcType=BIGINT}, #{positionId,jdbcType=BIGINT}, 
+      #{idNumber,jdbcType=VARCHAR}, #{age,jdbcType=BIGINT}, #{mobile,jdbcType=VARCHAR}, 
+      #{ethnic,jdbcType=VARCHAR}, #{maritalStatus,jdbcType=INTEGER}, #{birthDate,jdbcType=TIMESTAMP}, 
+      #{highestEducationInstitute,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{graduationDate,jdbcType=TIMESTAMP}, 
+      #{educationDegree,jdbcType=INTEGER}, #{educationDegreeType,jdbcType=INTEGER}, #{registeredResidence,jdbcType=VARCHAR}, 
+      #{registeredResidenceType,jdbcType=INTEGER}, #{emergencyContactName,jdbcType=VARCHAR}, 
+      #{emergencyContactRelationship,jdbcType=INTEGER}, #{emergencyContactNumber,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{employmentStatus,jdbcType=INTEGER}, #{employmentType,jdbcType=INTEGER}, 
+      #{hiringDate,jdbcType=TIMESTAMP}, #{trialEndDate,jdbcType=TIMESTAMP}, #{employmentLevel,jdbcType=INTEGER}, 
+      #{supervisor,jdbcType=BIGINT}, #{subject,jdbcType=VARCHAR}, #{starLevel,jdbcType=VARCHAR}, 
+      #{workingYears,jdbcType=INTEGER}, #{latestWorkingExperience,jdbcType=VARCHAR}, 
+      #{latestCompanyPosition,jdbcType=VARCHAR}, #{latestEducationStartDate,jdbcType=DATE}, 
+      #{latestEducationEndDate,jdbcType=DATE}, #{recruitmentSources,jdbcType=VARCHAR}, 
+      #{referenceName,jdbcType=VARCHAR}, #{paymentStartDate,jdbcType=TIMESTAMP}, #{contractStartDate,jdbcType=TIMESTAMP}, 
+      #{contractEndDate,jdbcType=TIMESTAMP}, #{contractType,jdbcType=INTEGER}, #{employer,jdbcType=VARCHAR}, 
+      #{trialSalary,jdbcType=DOUBLE}, #{salary,jdbcType=DOUBLE}, #{performanceBase,jdbcType=DOUBLE}, 
+      #{royalty,jdbcType=DOUBLE}, #{socialSecurityStatus,jdbcType=INTEGER}, #{socialSecurityBase,jdbcType=DOUBLE}, 
+      #{socialSecuritySelfAmount,jdbcType=DOUBLE}, #{socialSecurityEmployerAmount,jdbcType=DOUBLE}, 
+      #{socialSecurityAddress,jdbcType=VARCHAR}, #{housingFundStatus,jdbcType=INTEGER}, 
+      #{housingFundBase,jdbcType=DOUBLE}, #{housingFundSelfAmount,jdbcType=DOUBLE}, #{housingFundEmployerAmount,jdbcType=DOUBLE}, 
+      #{housingFundAddress,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=BIGINT}, #{updatedBy,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.youwin.yws.models.crm.Employees" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into employees
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="positionId != null" >
+        position_id,
+      </if>
+      <if test="idNumber != null" >
+        id_number,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="ethnic != null" >
+        ethnic,
+      </if>
+      <if test="maritalStatus != null" >
+        marital_status,
+      </if>
+      <if test="birthDate != null" >
+        birth_date,
+      </if>
+      <if test="highestEducationInstitute != null" >
+        highest_education_institute,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="graduationDate != null" >
+        graduation_date,
+      </if>
+      <if test="educationDegree != null" >
+        education_degree,
+      </if>
+      <if test="educationDegreeType != null" >
+        education_degree_type,
+      </if>
+      <if test="registeredResidence != null" >
+        registered_residence,
+      </if>
+      <if test="registeredResidenceType != null" >
+        registered_residence_type,
+      </if>
+      <if test="emergencyContactName != null" >
+        emergency_contact_name,
+      </if>
+      <if test="emergencyContactRelationship != null" >
+        emergency_contact_relationship,
+      </if>
+      <if test="emergencyContactNumber != null" >
+        emergency_contact_number,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="employmentStatus != null" >
+        employment_status,
+      </if>
+      <if test="employmentType != null" >
+        employment_type,
+      </if>
+      <if test="hiringDate != null" >
+        hiring_date,
+      </if>
+      <if test="trialEndDate != null" >
+        trial_end_date,
+      </if>
+      <if test="employmentLevel != null" >
+        employment_level,
+      </if>
+      <if test="supervisor != null" >
+        supervisor,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="starLevel != null" >
+        star_level,
+      </if>
+      <if test="workingYears != null" >
+        working_years,
+      </if>
+      <if test="latestWorkingExperience != null" >
+        latest_working_experience,
+      </if>
+      <if test="latestCompanyPosition != null" >
+        latest_company_position,
+      </if>
+      <if test="latestEducationStartDate != null" >
+        latest_education_start_date,
+      </if>
+      <if test="latestEducationEndDate != null" >
+        latest_education_end_date,
+      </if>
+      <if test="recruitmentSources != null" >
+        recruitment_sources,
+      </if>
+      <if test="referenceName != null" >
+        reference_name,
+      </if>
+      <if test="paymentStartDate != null" >
+        payment_start_date,
+      </if>
+      <if test="contractStartDate != null" >
+        contract_start_date,
+      </if>
+      <if test="contractEndDate != null" >
+        contract_end_date,
+      </if>
+      <if test="contractType != null" >
+        contract_type,
+      </if>
+      <if test="employer != null" >
+        employer,
+      </if>
+      <if test="trialSalary != null" >
+        trial_salary,
+      </if>
+      <if test="salary != null" >
+        salary,
+      </if>
+      <if test="performanceBase != null" >
+        performance_base,
+      </if>
+      <if test="royalty != null" >
+        royalty,
+      </if>
+      <if test="socialSecurityStatus != null" >
+        social_security_status,
+      </if>
+      <if test="socialSecurityBase != null" >
+        social_security_base,
+      </if>
+      <if test="socialSecuritySelfAmount != null" >
+        social_security_self_amount,
+      </if>
+      <if test="socialSecurityEmployerAmount != null" >
+        social_security_employer_amount,
+      </if>
+      <if test="socialSecurityAddress != null" >
+        social_security_address,
+      </if>
+      <if test="housingFundStatus != null" >
+        housing_fund_status,
+      </if>
+      <if test="housingFundBase != null" >
+        housing_fund_base,
+      </if>
+      <if test="housingFundSelfAmount != null" >
+        housing_fund_self_amount,
+      </if>
+      <if test="housingFundEmployerAmount != null" >
+        housing_fund_employer_amount,
+      </if>
+      <if test="housingFundAddress != null" >
+        housing_fund_address,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="positionId != null" >
+        #{positionId,jdbcType=BIGINT},
+      </if>
+      <if test="idNumber != null" >
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=BIGINT},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="ethnic != null" >
+        #{ethnic,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="birthDate != null" >
+        #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="highestEducationInstitute != null" >
+        #{highestEducationInstitute,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationDate != null" >
+        #{graduationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="educationDegree != null" >
+        #{educationDegree,jdbcType=INTEGER},
+      </if>
+      <if test="educationDegreeType != null" >
+        #{educationDegreeType,jdbcType=INTEGER},
+      </if>
+      <if test="registeredResidence != null" >
+        #{registeredResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredResidenceType != null" >
+        #{registeredResidenceType,jdbcType=INTEGER},
+      </if>
+      <if test="emergencyContactName != null" >
+        #{emergencyContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactRelationship != null" >
+        #{emergencyContactRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="emergencyContactNumber != null" >
+        #{emergencyContactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="employmentStatus != null" >
+        #{employmentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="employmentType != null" >
+        #{employmentType,jdbcType=INTEGER},
+      </if>
+      <if test="hiringDate != null" >
+        #{hiringDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trialEndDate != null" >
+        #{trialEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employmentLevel != null" >
+        #{employmentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="supervisor != null" >
+        #{supervisor,jdbcType=BIGINT},
+      </if>
+      <if test="subject != null" >
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="starLevel != null" >
+        #{starLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="workingYears != null" >
+        #{workingYears,jdbcType=INTEGER},
+      </if>
+      <if test="latestWorkingExperience != null" >
+        #{latestWorkingExperience,jdbcType=VARCHAR},
+      </if>
+      <if test="latestCompanyPosition != null" >
+        #{latestCompanyPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="latestEducationStartDate != null" >
+        #{latestEducationStartDate,jdbcType=DATE},
+      </if>
+      <if test="latestEducationEndDate != null" >
+        #{latestEducationEndDate,jdbcType=DATE},
+      </if>
+      <if test="recruitmentSources != null" >
+        #{recruitmentSources,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceName != null" >
+        #{referenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentStartDate != null" >
+        #{paymentStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractStartDate != null" >
+        #{contractStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractEndDate != null" >
+        #{contractEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractType != null" >
+        #{contractType,jdbcType=INTEGER},
+      </if>
+      <if test="employer != null" >
+        #{employer,jdbcType=VARCHAR},
+      </if>
+      <if test="trialSalary != null" >
+        #{trialSalary,jdbcType=DOUBLE},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=DOUBLE},
+      </if>
+      <if test="performanceBase != null" >
+        #{performanceBase,jdbcType=DOUBLE},
+      </if>
+      <if test="royalty != null" >
+        #{royalty,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityStatus != null" >
+        #{socialSecurityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="socialSecurityBase != null" >
+        #{socialSecurityBase,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecuritySelfAmount != null" >
+        #{socialSecuritySelfAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityEmployerAmount != null" >
+        #{socialSecurityEmployerAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityAddress != null" >
+        #{socialSecurityAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="housingFundStatus != null" >
+        #{housingFundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="housingFundBase != null" >
+        #{housingFundBase,jdbcType=DOUBLE},
+      </if>
+      <if test="housingFundSelfAmount != null" >
+        #{housingFundSelfAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="housingFundEmployerAmount != null" >
+        #{housingFundEmployerAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="housingFundAddress != null" >
+        #{housingFundAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.youwin.yws.models.crm.EmployeesExample" resultType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select count(*) from employees
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update employees
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.departmentId != null" >
+        department_id = #{record.departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.positionId != null" >
+        position_id = #{record.positionId,jdbcType=BIGINT},
+      </if>
+      <if test="record.idNumber != null" >
+        id_number = #{record.idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=BIGINT},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ethnic != null" >
+        ethnic = #{record.ethnic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maritalStatus != null" >
+        marital_status = #{record.maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.birthDate != null" >
+        birth_date = #{record.birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.highestEducationInstitute != null" >
+        highest_education_institute = #{record.highestEducationInstitute,jdbcType=VARCHAR},
+      </if>
+      <if test="record.major != null" >
+        major = #{record.major,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduationDate != null" >
+        graduation_date = #{record.graduationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.educationDegree != null" >
+        education_degree = #{record.educationDegree,jdbcType=INTEGER},
+      </if>
+      <if test="record.educationDegreeType != null" >
+        education_degree_type = #{record.educationDegreeType,jdbcType=INTEGER},
+      </if>
+      <if test="record.registeredResidence != null" >
+        registered_residence = #{record.registeredResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registeredResidenceType != null" >
+        registered_residence_type = #{record.registeredResidenceType,jdbcType=INTEGER},
+      </if>
+      <if test="record.emergencyContactName != null" >
+        emergency_contact_name = #{record.emergencyContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.emergencyContactRelationship != null" >
+        emergency_contact_relationship = #{record.emergencyContactRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="record.emergencyContactNumber != null" >
+        emergency_contact_number = #{record.emergencyContactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.employmentStatus != null" >
+        employment_status = #{record.employmentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.employmentType != null" >
+        employment_type = #{record.employmentType,jdbcType=INTEGER},
+      </if>
+      <if test="record.hiringDate != null" >
+        hiring_date = #{record.hiringDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.trialEndDate != null" >
+        trial_end_date = #{record.trialEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.employmentLevel != null" >
+        employment_level = #{record.employmentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.supervisor != null" >
+        supervisor = #{record.supervisor,jdbcType=BIGINT},
+      </if>
+      <if test="record.subject != null" >
+        subject = #{record.subject,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starLevel != null" >
+        star_level = #{record.starLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workingYears != null" >
+        working_years = #{record.workingYears,jdbcType=INTEGER},
+      </if>
+      <if test="record.latestWorkingExperience != null" >
+        latest_working_experience = #{record.latestWorkingExperience,jdbcType=VARCHAR},
+      </if>
+      <if test="record.latestCompanyPosition != null" >
+        latest_company_position = #{record.latestCompanyPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.latestEducationStartDate != null" >
+        latest_education_start_date = #{record.latestEducationStartDate,jdbcType=DATE},
+      </if>
+      <if test="record.latestEducationEndDate != null" >
+        latest_education_end_date = #{record.latestEducationEndDate,jdbcType=DATE},
+      </if>
+      <if test="record.recruitmentSources != null" >
+        recruitment_sources = #{record.recruitmentSources,jdbcType=VARCHAR},
+      </if>
+      <if test="record.referenceName != null" >
+        reference_name = #{record.referenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paymentStartDate != null" >
+        payment_start_date = #{record.paymentStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contractStartDate != null" >
+        contract_start_date = #{record.contractStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contractEndDate != null" >
+        contract_end_date = #{record.contractEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contractType != null" >
+        contract_type = #{record.contractType,jdbcType=INTEGER},
+      </if>
+      <if test="record.employer != null" >
+        employer = #{record.employer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.trialSalary != null" >
+        trial_salary = #{record.trialSalary,jdbcType=DOUBLE},
+      </if>
+      <if test="record.salary != null" >
+        salary = #{record.salary,jdbcType=DOUBLE},
+      </if>
+      <if test="record.performanceBase != null" >
+        performance_base = #{record.performanceBase,jdbcType=DOUBLE},
+      </if>
+      <if test="record.royalty != null" >
+        royalty = #{record.royalty,jdbcType=DOUBLE},
+      </if>
+      <if test="record.socialSecurityStatus != null" >
+        social_security_status = #{record.socialSecurityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.socialSecurityBase != null" >
+        social_security_base = #{record.socialSecurityBase,jdbcType=DOUBLE},
+      </if>
+      <if test="record.socialSecuritySelfAmount != null" >
+        social_security_self_amount = #{record.socialSecuritySelfAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.socialSecurityEmployerAmount != null" >
+        social_security_employer_amount = #{record.socialSecurityEmployerAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.socialSecurityAddress != null" >
+        social_security_address = #{record.socialSecurityAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.housingFundStatus != null" >
+        housing_fund_status = #{record.housingFundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.housingFundBase != null" >
+        housing_fund_base = #{record.housingFundBase,jdbcType=DOUBLE},
+      </if>
+      <if test="record.housingFundSelfAmount != null" >
+        housing_fund_self_amount = #{record.housingFundSelfAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.housingFundEmployerAmount != null" >
+        housing_fund_employer_amount = #{record.housingFundEmployerAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="record.housingFundAddress != null" >
+        housing_fund_address = #{record.housingFundAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdAt != null" >
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedAt != null" >
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdBy != null" >
+        created_by = #{record.createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.updatedBy != null" >
+        updated_by = #{record.updatedBy,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update employees
+    set id = #{record.id,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      department_id = #{record.departmentId,jdbcType=BIGINT},
+      position_id = #{record.positionId,jdbcType=BIGINT},
+      id_number = #{record.idNumber,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=BIGINT},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      ethnic = #{record.ethnic,jdbcType=VARCHAR},
+      marital_status = #{record.maritalStatus,jdbcType=INTEGER},
+      birth_date = #{record.birthDate,jdbcType=TIMESTAMP},
+      highest_education_institute = #{record.highestEducationInstitute,jdbcType=VARCHAR},
+      major = #{record.major,jdbcType=VARCHAR},
+      graduation_date = #{record.graduationDate,jdbcType=TIMESTAMP},
+      education_degree = #{record.educationDegree,jdbcType=INTEGER},
+      education_degree_type = #{record.educationDegreeType,jdbcType=INTEGER},
+      registered_residence = #{record.registeredResidence,jdbcType=VARCHAR},
+      registered_residence_type = #{record.registeredResidenceType,jdbcType=INTEGER},
+      emergency_contact_name = #{record.emergencyContactName,jdbcType=VARCHAR},
+      emergency_contact_relationship = #{record.emergencyContactRelationship,jdbcType=INTEGER},
+      emergency_contact_number = #{record.emergencyContactNumber,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      employment_status = #{record.employmentStatus,jdbcType=INTEGER},
+      employment_type = #{record.employmentType,jdbcType=INTEGER},
+      hiring_date = #{record.hiringDate,jdbcType=TIMESTAMP},
+      trial_end_date = #{record.trialEndDate,jdbcType=TIMESTAMP},
+      employment_level = #{record.employmentLevel,jdbcType=INTEGER},
+      supervisor = #{record.supervisor,jdbcType=BIGINT},
+      subject = #{record.subject,jdbcType=VARCHAR},
+      star_level = #{record.starLevel,jdbcType=VARCHAR},
+      working_years = #{record.workingYears,jdbcType=INTEGER},
+      latest_working_experience = #{record.latestWorkingExperience,jdbcType=VARCHAR},
+      latest_company_position = #{record.latestCompanyPosition,jdbcType=VARCHAR},
+      latest_education_start_date = #{record.latestEducationStartDate,jdbcType=DATE},
+      latest_education_end_date = #{record.latestEducationEndDate,jdbcType=DATE},
+      recruitment_sources = #{record.recruitmentSources,jdbcType=VARCHAR},
+      reference_name = #{record.referenceName,jdbcType=VARCHAR},
+      payment_start_date = #{record.paymentStartDate,jdbcType=TIMESTAMP},
+      contract_start_date = #{record.contractStartDate,jdbcType=TIMESTAMP},
+      contract_end_date = #{record.contractEndDate,jdbcType=TIMESTAMP},
+      contract_type = #{record.contractType,jdbcType=INTEGER},
+      employer = #{record.employer,jdbcType=VARCHAR},
+      trial_salary = #{record.trialSalary,jdbcType=DOUBLE},
+      salary = #{record.salary,jdbcType=DOUBLE},
+      performance_base = #{record.performanceBase,jdbcType=DOUBLE},
+      royalty = #{record.royalty,jdbcType=DOUBLE},
+      social_security_status = #{record.socialSecurityStatus,jdbcType=INTEGER},
+      social_security_base = #{record.socialSecurityBase,jdbcType=DOUBLE},
+      social_security_self_amount = #{record.socialSecuritySelfAmount,jdbcType=DOUBLE},
+      social_security_employer_amount = #{record.socialSecurityEmployerAmount,jdbcType=DOUBLE},
+      social_security_address = #{record.socialSecurityAddress,jdbcType=VARCHAR},
+      housing_fund_status = #{record.housingFundStatus,jdbcType=INTEGER},
+      housing_fund_base = #{record.housingFundBase,jdbcType=DOUBLE},
+      housing_fund_self_amount = #{record.housingFundSelfAmount,jdbcType=DOUBLE},
+      housing_fund_employer_amount = #{record.housingFundEmployerAmount,jdbcType=DOUBLE},
+      housing_fund_address = #{record.housingFundAddress,jdbcType=VARCHAR},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      created_by = #{record.createdBy,jdbcType=BIGINT},
+      updated_by = #{record.updatedBy,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youwin.yws.models.crm.Employees" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update employees
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=BIGINT},
+      </if>
+      <if test="positionId != null" >
+        position_id = #{positionId,jdbcType=BIGINT},
+      </if>
+      <if test="idNumber != null" >
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=BIGINT},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="ethnic != null" >
+        ethnic = #{ethnic,jdbcType=VARCHAR},
+      </if>
+      <if test="maritalStatus != null" >
+        marital_status = #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="birthDate != null" >
+        birth_date = #{birthDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="highestEducationInstitute != null" >
+        highest_education_institute = #{highestEducationInstitute,jdbcType=VARCHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationDate != null" >
+        graduation_date = #{graduationDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="educationDegree != null" >
+        education_degree = #{educationDegree,jdbcType=INTEGER},
+      </if>
+      <if test="educationDegreeType != null" >
+        education_degree_type = #{educationDegreeType,jdbcType=INTEGER},
+      </if>
+      <if test="registeredResidence != null" >
+        registered_residence = #{registeredResidence,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredResidenceType != null" >
+        registered_residence_type = #{registeredResidenceType,jdbcType=INTEGER},
+      </if>
+      <if test="emergencyContactName != null" >
+        emergency_contact_name = #{emergencyContactName,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContactRelationship != null" >
+        emergency_contact_relationship = #{emergencyContactRelationship,jdbcType=INTEGER},
+      </if>
+      <if test="emergencyContactNumber != null" >
+        emergency_contact_number = #{emergencyContactNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="employmentStatus != null" >
+        employment_status = #{employmentStatus,jdbcType=INTEGER},
+      </if>
+      <if test="employmentType != null" >
+        employment_type = #{employmentType,jdbcType=INTEGER},
+      </if>
+      <if test="hiringDate != null" >
+        hiring_date = #{hiringDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trialEndDate != null" >
+        trial_end_date = #{trialEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="employmentLevel != null" >
+        employment_level = #{employmentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="supervisor != null" >
+        supervisor = #{supervisor,jdbcType=BIGINT},
+      </if>
+      <if test="subject != null" >
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="starLevel != null" >
+        star_level = #{starLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="workingYears != null" >
+        working_years = #{workingYears,jdbcType=INTEGER},
+      </if>
+      <if test="latestWorkingExperience != null" >
+        latest_working_experience = #{latestWorkingExperience,jdbcType=VARCHAR},
+      </if>
+      <if test="latestCompanyPosition != null" >
+        latest_company_position = #{latestCompanyPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="latestEducationStartDate != null" >
+        latest_education_start_date = #{latestEducationStartDate,jdbcType=DATE},
+      </if>
+      <if test="latestEducationEndDate != null" >
+        latest_education_end_date = #{latestEducationEndDate,jdbcType=DATE},
+      </if>
+      <if test="recruitmentSources != null" >
+        recruitment_sources = #{recruitmentSources,jdbcType=VARCHAR},
+      </if>
+      <if test="referenceName != null" >
+        reference_name = #{referenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentStartDate != null" >
+        payment_start_date = #{paymentStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractStartDate != null" >
+        contract_start_date = #{contractStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractEndDate != null" >
+        contract_end_date = #{contractEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractType != null" >
+        contract_type = #{contractType,jdbcType=INTEGER},
+      </if>
+      <if test="employer != null" >
+        employer = #{employer,jdbcType=VARCHAR},
+      </if>
+      <if test="trialSalary != null" >
+        trial_salary = #{trialSalary,jdbcType=DOUBLE},
+      </if>
+      <if test="salary != null" >
+        salary = #{salary,jdbcType=DOUBLE},
+      </if>
+      <if test="performanceBase != null" >
+        performance_base = #{performanceBase,jdbcType=DOUBLE},
+      </if>
+      <if test="royalty != null" >
+        royalty = #{royalty,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityStatus != null" >
+        social_security_status = #{socialSecurityStatus,jdbcType=INTEGER},
+      </if>
+      <if test="socialSecurityBase != null" >
+        social_security_base = #{socialSecurityBase,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecuritySelfAmount != null" >
+        social_security_self_amount = #{socialSecuritySelfAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityEmployerAmount != null" >
+        social_security_employer_amount = #{socialSecurityEmployerAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="socialSecurityAddress != null" >
+        social_security_address = #{socialSecurityAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="housingFundStatus != null" >
+        housing_fund_status = #{housingFundStatus,jdbcType=INTEGER},
+      </if>
+      <if test="housingFundBase != null" >
+        housing_fund_base = #{housingFundBase,jdbcType=DOUBLE},
+      </if>
+      <if test="housingFundSelfAmount != null" >
+        housing_fund_self_amount = #{housingFundSelfAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="housingFundEmployerAmount != null" >
+        housing_fund_employer_amount = #{housingFundEmployerAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="housingFundAddress != null" >
+        housing_fund_address = #{housingFundAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youwin.yws.models.crm.Employees" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update employees
+    set user_id = #{userId,jdbcType=BIGINT},
+      department_id = #{departmentId,jdbcType=BIGINT},
+      position_id = #{positionId,jdbcType=BIGINT},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      age = #{age,jdbcType=BIGINT},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      ethnic = #{ethnic,jdbcType=VARCHAR},
+      marital_status = #{maritalStatus,jdbcType=INTEGER},
+      birth_date = #{birthDate,jdbcType=TIMESTAMP},
+      highest_education_institute = #{highestEducationInstitute,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      graduation_date = #{graduationDate,jdbcType=TIMESTAMP},
+      education_degree = #{educationDegree,jdbcType=INTEGER},
+      education_degree_type = #{educationDegreeType,jdbcType=INTEGER},
+      registered_residence = #{registeredResidence,jdbcType=VARCHAR},
+      registered_residence_type = #{registeredResidenceType,jdbcType=INTEGER},
+      emergency_contact_name = #{emergencyContactName,jdbcType=VARCHAR},
+      emergency_contact_relationship = #{emergencyContactRelationship,jdbcType=INTEGER},
+      emergency_contact_number = #{emergencyContactNumber,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      employment_status = #{employmentStatus,jdbcType=INTEGER},
+      employment_type = #{employmentType,jdbcType=INTEGER},
+      hiring_date = #{hiringDate,jdbcType=TIMESTAMP},
+      trial_end_date = #{trialEndDate,jdbcType=TIMESTAMP},
+      employment_level = #{employmentLevel,jdbcType=INTEGER},
+      supervisor = #{supervisor,jdbcType=BIGINT},
+      subject = #{subject,jdbcType=VARCHAR},
+      star_level = #{starLevel,jdbcType=VARCHAR},
+      working_years = #{workingYears,jdbcType=INTEGER},
+      latest_working_experience = #{latestWorkingExperience,jdbcType=VARCHAR},
+      latest_company_position = #{latestCompanyPosition,jdbcType=VARCHAR},
+      latest_education_start_date = #{latestEducationStartDate,jdbcType=DATE},
+      latest_education_end_date = #{latestEducationEndDate,jdbcType=DATE},
+      recruitment_sources = #{recruitmentSources,jdbcType=VARCHAR},
+      reference_name = #{referenceName,jdbcType=VARCHAR},
+      payment_start_date = #{paymentStartDate,jdbcType=TIMESTAMP},
+      contract_start_date = #{contractStartDate,jdbcType=TIMESTAMP},
+      contract_end_date = #{contractEndDate,jdbcType=TIMESTAMP},
+      contract_type = #{contractType,jdbcType=INTEGER},
+      employer = #{employer,jdbcType=VARCHAR},
+      trial_salary = #{trialSalary,jdbcType=DOUBLE},
+      salary = #{salary,jdbcType=DOUBLE},
+      performance_base = #{performanceBase,jdbcType=DOUBLE},
+      royalty = #{royalty,jdbcType=DOUBLE},
+      social_security_status = #{socialSecurityStatus,jdbcType=INTEGER},
+      social_security_base = #{socialSecurityBase,jdbcType=DOUBLE},
+      social_security_self_amount = #{socialSecuritySelfAmount,jdbcType=DOUBLE},
+      social_security_employer_amount = #{socialSecurityEmployerAmount,jdbcType=DOUBLE},
+      social_security_address = #{socialSecurityAddress,jdbcType=VARCHAR},
+      housing_fund_status = #{housingFundStatus,jdbcType=INTEGER},
+      housing_fund_base = #{housingFundBase,jdbcType=DOUBLE},
+      housing_fund_self_amount = #{housingFundSelfAmount,jdbcType=DOUBLE},
+      housing_fund_employer_amount = #{housingFundEmployerAmount,jdbcType=DOUBLE},
+      housing_fund_address = #{housingFundAddress,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=BIGINT},
+      updated_by = #{updatedBy,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <cache >
+    <!--
+      WARNING - @mbggenerated
+    -->
+  </cache>
+</mapper>

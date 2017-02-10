@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youwin.yws.persistence.crm.CrmOrderStudentMapper" >
+  <resultMap id="BaseResultMap" type="com.youwin.yws.models.crm.CrmOrderStudent" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="organization_id" property="organizationId" jdbcType="BIGINT" />
+    <result column="leads_student_id" property="leadsStudentId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+    <result column="order_type" property="orderType" jdbcType="INTEGER" />
+    <result column="order_status" property="orderStatus" jdbcType="INTEGER" />
+    <result column="real_standard_price" property="realStandardPrice" jdbcType="DECIMAL" />
+    <result column="real_total_amount" property="realTotalAmount" jdbcType="DECIMAL" />
+    <result column="privilege_amount" property="privilegeAmount" jdbcType="DECIMAL" />
+    <result column="real_pay_amount" property="realPayAmount" jdbcType="DECIMAL" />
+    <result column="pay_due_amount" property="payDueAmount" jdbcType="DECIMAL" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="contract_start_date" property="contractStartDate" jdbcType="TIMESTAMP" />
+    <result column="contract_end_date" property="contractEndDate" jdbcType="TIMESTAMP" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="BIGINT" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="BIGINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+    <result column="ext" property="ext" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, organization_id, leads_student_id, user_id, order_no, order_type, order_status, 
+    real_standard_price, real_total_amount, privilege_amount, real_pay_amount, pay_due_amount, 
+    reason, contract_start_date, contract_end_date, created_at, created_by, updated_at, 
+    updated_by, is_deleted, ext
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.youwin.yws.models.crm.CrmOrderStudentExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from crm_order_student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_order_student
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from crm_order_student
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.youwin.yws.models.crm.CrmOrderStudentExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from crm_order_student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.youwin.yws.models.crm.CrmOrderStudent" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into crm_order_student (organization_id, leads_student_id, user_id, 
+      order_no, order_type, order_status, 
+      real_standard_price, real_total_amount, privilege_amount, 
+      real_pay_amount, pay_due_amount, reason, 
+      contract_start_date, contract_end_date, 
+      created_at, created_by, updated_at, 
+      updated_by, is_deleted, ext
+      )
+    values (#{organizationId,jdbcType=BIGINT}, #{leadsStudentId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, 
+      #{orderNo,jdbcType=VARCHAR}, #{orderType,jdbcType=INTEGER}, #{orderStatus,jdbcType=INTEGER}, 
+      #{realStandardPrice,jdbcType=DECIMAL}, #{realTotalAmount,jdbcType=DECIMAL}, #{privilegeAmount,jdbcType=DECIMAL}, 
+      #{realPayAmount,jdbcType=DECIMAL}, #{payDueAmount,jdbcType=DECIMAL}, #{reason,jdbcType=VARCHAR}, 
+      #{contractStartDate,jdbcType=TIMESTAMP}, #{contractEndDate,jdbcType=TIMESTAMP}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=BIGINT}, #{updatedAt,jdbcType=TIMESTAMP}, 
+      #{updatedBy,jdbcType=BIGINT}, #{isDeleted,jdbcType=BIT}, #{ext,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.youwin.yws.models.crm.CrmOrderStudent" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into crm_order_student
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="leadsStudentId != null" >
+        leads_student_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="orderType != null" >
+        order_type,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="realStandardPrice != null" >
+        real_standard_price,
+      </if>
+      <if test="realTotalAmount != null" >
+        real_total_amount,
+      </if>
+      <if test="privilegeAmount != null" >
+        privilege_amount,
+      </if>
+      <if test="realPayAmount != null" >
+        real_pay_amount,
+      </if>
+      <if test="payDueAmount != null" >
+        pay_due_amount,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="contractStartDate != null" >
+        contract_start_date,
+      </if>
+      <if test="contractEndDate != null" >
+        contract_end_date,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="ext != null" >
+        ext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="leadsStudentId != null" >
+        #{leadsStudentId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="realStandardPrice != null" >
+        #{realStandardPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="realTotalAmount != null" >
+        #{realTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="privilegeAmount != null" >
+        #{privilegeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="realPayAmount != null" >
+        #{realPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payDueAmount != null" >
+        #{payDueAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="contractStartDate != null" >
+        #{contractStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractEndDate != null" >
+        #{contractEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="ext != null" >
+        #{ext,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.youwin.yws.models.crm.CrmOrderStudentExample" resultType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select count(*) from crm_order_student
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_order_student
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.organizationId != null" >
+        organization_id = #{record.organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="record.leadsStudentId != null" >
+        leads_student_id = #{record.leadsStudentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.orderNo != null" >
+        order_no = #{record.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderType != null" >
+        order_type = #{record.orderType,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderStatus != null" >
+        order_status = #{record.orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.realStandardPrice != null" >
+        real_standard_price = #{record.realStandardPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.realTotalAmount != null" >
+        real_total_amount = #{record.realTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.privilegeAmount != null" >
+        privilege_amount = #{record.privilegeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.realPayAmount != null" >
+        real_pay_amount = #{record.realPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.payDueAmount != null" >
+        pay_due_amount = #{record.payDueAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.reason != null" >
+        reason = #{record.reason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contractStartDate != null" >
+        contract_start_date = #{record.contractStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contractEndDate != null" >
+        contract_end_date = #{record.contractEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdAt != null" >
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdBy != null" >
+        created_by = #{record.createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.updatedAt != null" >
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null" >
+        updated_by = #{record.updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=BIT},
+      </if>
+      <if test="record.ext != null" >
+        ext = #{record.ext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_order_student
+    set id = #{record.id,jdbcType=BIGINT},
+      organization_id = #{record.organizationId,jdbcType=BIGINT},
+      leads_student_id = #{record.leadsStudentId,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      order_no = #{record.orderNo,jdbcType=VARCHAR},
+      order_type = #{record.orderType,jdbcType=INTEGER},
+      order_status = #{record.orderStatus,jdbcType=INTEGER},
+      real_standard_price = #{record.realStandardPrice,jdbcType=DECIMAL},
+      real_total_amount = #{record.realTotalAmount,jdbcType=DECIMAL},
+      privilege_amount = #{record.privilegeAmount,jdbcType=DECIMAL},
+      real_pay_amount = #{record.realPayAmount,jdbcType=DECIMAL},
+      pay_due_amount = #{record.payDueAmount,jdbcType=DECIMAL},
+      reason = #{record.reason,jdbcType=VARCHAR},
+      contract_start_date = #{record.contractStartDate,jdbcType=TIMESTAMP},
+      contract_end_date = #{record.contractEndDate,jdbcType=TIMESTAMP},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      created_by = #{record.createdBy,jdbcType=BIGINT},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      updated_by = #{record.updatedBy,jdbcType=BIGINT},
+      is_deleted = #{record.isDeleted,jdbcType=BIT},
+      ext = #{record.ext,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youwin.yws.models.crm.CrmOrderStudent" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_order_student
+    <set >
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="leadsStudentId != null" >
+        leads_student_id = #{leadsStudentId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderType != null" >
+        order_type = #{orderType,jdbcType=INTEGER},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=INTEGER},
+      </if>
+      <if test="realStandardPrice != null" >
+        real_standard_price = #{realStandardPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="realTotalAmount != null" >
+        real_total_amount = #{realTotalAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="privilegeAmount != null" >
+        privilege_amount = #{privilegeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="realPayAmount != null" >
+        real_pay_amount = #{realPayAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payDueAmount != null" >
+        pay_due_amount = #{payDueAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="contractStartDate != null" >
+        contract_start_date = #{contractStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contractEndDate != null" >
+        contract_end_date = #{contractEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=BIGINT},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=BIGINT},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="ext != null" >
+        ext = #{ext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youwin.yws.models.crm.CrmOrderStudent" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_order_student
+    set organization_id = #{organizationId,jdbcType=BIGINT},
+      leads_student_id = #{leadsStudentId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=BIGINT},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      order_type = #{orderType,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=INTEGER},
+      real_standard_price = #{realStandardPrice,jdbcType=DECIMAL},
+      real_total_amount = #{realTotalAmount,jdbcType=DECIMAL},
+      privilege_amount = #{privilegeAmount,jdbcType=DECIMAL},
+      real_pay_amount = #{realPayAmount,jdbcType=DECIMAL},
+      pay_due_amount = #{payDueAmount,jdbcType=DECIMAL},
+      reason = #{reason,jdbcType=VARCHAR},
+      contract_start_date = #{contractStartDate,jdbcType=TIMESTAMP},
+      contract_end_date = #{contractEndDate,jdbcType=TIMESTAMP},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=BIGINT},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=BIGINT},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      ext = #{ext,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <cache >
+    <!--
+      WARNING - @mbggenerated
+    -->
+  </cache>
+</mapper>

@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.youwin.yws.persistence.crm.CrmInvitationRemindMapper" >
+  <resultMap id="BaseResultMap" type="com.youwin.yws.models.crm.CrmInvitationRemind" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="person_id" property="personId" jdbcType="BIGINT" />
+    <result column="person_type" property="personType" jdbcType="TINYINT" />
+    <result column="person_state" property="personState" jdbcType="TINYINT" />
+    <result column="organization_id" property="organizationId" jdbcType="BIGINT" />
+    <result column="remind_time" property="remindTime" jdbcType="TIMESTAMP" />
+    <result column="remind_content" property="remindContent" jdbcType="VARCHAR" />
+    <result column="create_at" property="createAt" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="BIGINT" />
+    <result column="update_at" property="updateAt" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="BIGINT" />
+    <result column="is_deleted" property="isDeleted" jdbcType="BIT" />
+    <result column="ext" property="ext" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, person_id, person_type, person_state, organization_id, remind_time, remind_content, 
+    create_at, create_by, update_at, update_by, is_deleted, ext
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.youwin.yws.models.crm.CrmInvitationRemindExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from crm_invitation_remind
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_invitation_remind
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from crm_invitation_remind
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.youwin.yws.models.crm.CrmInvitationRemindExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from crm_invitation_remind
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.youwin.yws.models.crm.CrmInvitationRemind" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into crm_invitation_remind (person_id, person_type, person_state, 
+      organization_id, remind_time, remind_content, 
+      create_at, create_by, update_at, 
+      update_by, is_deleted, ext
+      )
+    values (#{personId,jdbcType=BIGINT}, #{personType,jdbcType=TINYINT}, #{personState,jdbcType=TINYINT}, 
+      #{organizationId,jdbcType=BIGINT}, #{remindTime,jdbcType=TIMESTAMP}, #{remindContent,jdbcType=VARCHAR}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{createBy,jdbcType=BIGINT}, #{updateAt,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=BIGINT}, #{isDeleted,jdbcType=BIT}, #{ext,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.youwin.yws.models.crm.CrmInvitationRemind" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into crm_invitation_remind
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="personId != null" >
+        person_id,
+      </if>
+      <if test="personType != null" >
+        person_type,
+      </if>
+      <if test="personState != null" >
+        person_state,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+      <if test="remindTime != null" >
+        remind_time,
+      </if>
+      <if test="remindContent != null" >
+        remind_content,
+      </if>
+      <if test="createAt != null" >
+        create_at,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="updateAt != null" >
+        update_at,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+      <if test="ext != null" >
+        ext,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="personId != null" >
+        #{personId,jdbcType=BIGINT},
+      </if>
+      <if test="personType != null" >
+        #{personType,jdbcType=TINYINT},
+      </if>
+      <if test="personState != null" >
+        #{personState,jdbcType=TINYINT},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="remindTime != null" >
+        #{remindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remindContent != null" >
+        #{remindContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateAt != null" >
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="ext != null" >
+        #{ext,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.youwin.yws.models.crm.CrmInvitationRemindExample" resultType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select count(*) from crm_invitation_remind
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_invitation_remind
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.personId != null" >
+        person_id = #{record.personId,jdbcType=BIGINT},
+      </if>
+      <if test="record.personType != null" >
+        person_type = #{record.personType,jdbcType=TINYINT},
+      </if>
+      <if test="record.personState != null" >
+        person_state = #{record.personState,jdbcType=TINYINT},
+      </if>
+      <if test="record.organizationId != null" >
+        organization_id = #{record.organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="record.remindTime != null" >
+        remind_time = #{record.remindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remindContent != null" >
+        remind_content = #{record.remindContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createAt != null" >
+        create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.updateAt != null" >
+        update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="record.isDeleted != null" >
+        is_deleted = #{record.isDeleted,jdbcType=BIT},
+      </if>
+      <if test="record.ext != null" >
+        ext = #{record.ext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_invitation_remind
+    set id = #{record.id,jdbcType=BIGINT},
+      person_id = #{record.personId,jdbcType=BIGINT},
+      person_type = #{record.personType,jdbcType=TINYINT},
+      person_state = #{record.personState,jdbcType=TINYINT},
+      organization_id = #{record.organizationId,jdbcType=BIGINT},
+      remind_time = #{record.remindTime,jdbcType=TIMESTAMP},
+      remind_content = #{record.remindContent,jdbcType=VARCHAR},
+      create_at = #{record.createAt,jdbcType=TIMESTAMP},
+      create_by = #{record.createBy,jdbcType=BIGINT},
+      update_at = #{record.updateAt,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=BIGINT},
+      is_deleted = #{record.isDeleted,jdbcType=BIT},
+      ext = #{record.ext,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.youwin.yws.models.crm.CrmInvitationRemind" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_invitation_remind
+    <set >
+      <if test="personId != null" >
+        person_id = #{personId,jdbcType=BIGINT},
+      </if>
+      <if test="personType != null" >
+        person_type = #{personType,jdbcType=TINYINT},
+      </if>
+      <if test="personState != null" >
+        person_state = #{personState,jdbcType=TINYINT},
+      </if>
+      <if test="organizationId != null" >
+        organization_id = #{organizationId,jdbcType=BIGINT},
+      </if>
+      <if test="remindTime != null" >
+        remind_time = #{remindTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remindContent != null" >
+        remind_content = #{remindContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null" >
+        create_at = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="updateAt != null" >
+        update_at = #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="ext != null" >
+        ext = #{ext,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.youwin.yws.models.crm.CrmInvitationRemind" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update crm_invitation_remind
+    set person_id = #{personId,jdbcType=BIGINT},
+      person_type = #{personType,jdbcType=TINYINT},
+      person_state = #{personState,jdbcType=TINYINT},
+      organization_id = #{organizationId,jdbcType=BIGINT},
+      remind_time = #{remindTime,jdbcType=TIMESTAMP},
+      remind_content = #{remindContent,jdbcType=VARCHAR},
+      create_at = #{createAt,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=BIGINT},
+      update_at = #{updateAt,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      ext = #{ext,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <cache >
+    <!--
+      WARNING - @mbggenerated
+    -->
+  </cache>
+</mapper>
